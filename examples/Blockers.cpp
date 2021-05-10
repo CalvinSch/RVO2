@@ -91,33 +91,51 @@ void setupScenario(RVO::RVOSimulator *sim)
 
     std::vector<RVO::Vector2> wallLeft, wallRight, wallTop, wallBot, zig;
 
+    std::cout << "const obstacle_data = [";
+
+/*
     wallLeft.push_back(RVO::Vector2(-40.0f, -65.0f));
     wallLeft.push_back(RVO::Vector2(-40.0f, 65.0f));
+    sim->addObstacle(wallLeft);
+    std::cout << "[{x:-40,y:-65},{x:-40,y:65}],";
+*/
 
+/*
     wallRight.push_back(RVO::Vector2(40.0f, -65.0f));
     wallRight.push_back(RVO::Vector2(40.0f, 65.0f));
+    sim->addObstacle(wallRight);
+    std::cout << "[{x:40,y:-65},{x:40,y:65}],";
+*/
 
+/*
     wallTop.push_back(RVO::Vector2(-50.0f, 80.0f));
     wallTop.push_back(RVO::Vector2(50.0f, 80.0f));
+    sim->addObstacle(wallTop);
+    std::cout << "[{x:-50,y:80},{x:50,y:80}],";
+*/
 
+/*
     wallBot.push_back(RVO::Vector2(-50.0f, -80.0f));
     wallBot.push_back(RVO::Vector2(50.0f, -80.0f));
-
-    zig.push_back(RVO::Vector2(10.0f, 60.0f));
-    zig.push_back(RVO::Vector2(-10.0f, 40.0f));
-    zig.push_back(RVO::Vector2(10.0f, 20.0f));
-    zig.push_back(RVO::Vector2(-10.0f, 0.0f));
-    zig.push_back(RVO::Vector2(10.0f, -20.0f));
-    zig.push_back(RVO::Vector2(-10.0f, -40.0f));
-    zig.push_back(RVO::Vector2(10.0f, -60.0f));
-
-    sim->addObstacle(wallLeft);
-    sim->addObstacle(wallRight);
-    sim->addObstacle(wallTop);
     sim->addObstacle(wallBot);
+    std::cout << "[{x:-50,y:-80},{x:50,y:-80}],";
+*/
+
+
+//    zig.push_back(RVO::Vector2(10.0f, 60.0f));
+//    zig.push_back(RVO::Vector2(-10.0f, 40.0f));
+    zig.push_back(RVO::Vector2(50.0f, 50.0f));
+    zig.push_back(RVO::Vector2(-50.0f, -50.0f));
+    zig.push_back(RVO::Vector2(50.0f, 50.0f));
+//    zig.push_back(RVO::Vector2(-10.0f, -40.0f));
+//    zig.push_back(RVO::Vector2(10.0f, -60.0f));
     sim->addObstacle(zig);
+    std::cout << "[/*{x:10,y:60},{x:-10,y:40},*/{x:50,y:50},{x:-50,y:-50},{x:50,y:50}/*,{x:-10,y:-40},{x:10,y:-60}*/]";
+
 
     sim->processObstacles();
+
+    std::cout << "];" << std::endl;
 }
 
 #if RVO_OUTPUT_TIME_AND_POSITIONS

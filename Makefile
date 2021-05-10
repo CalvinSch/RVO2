@@ -567,17 +567,17 @@ RVO/fast:
 .PHONY : RVO/fast
 
 #=============================================================================
-# Target rules for targets named Redrover
+# Target rules for targets named Blocks
 
 # Build rule for target.
-Redrover: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Redrover
-.PHONY : Redrover
+Blocks: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Blocks
+.PHONY : Blocks
 
 # fast build rule for target.
-Redrover/fast:
-	$(MAKE) -f examples/CMakeFiles/Redrover.dir/build.make examples/CMakeFiles/Redrover.dir/build
-.PHONY : Redrover/fast
+Blocks/fast:
+	$(MAKE) -f examples/CMakeFiles/Blocks.dir/build.make examples/CMakeFiles/Blocks.dir/build
+.PHONY : Blocks/fast
 
 #=============================================================================
 # Target rules for targets named Roadmap
@@ -606,17 +606,30 @@ Circle/fast:
 .PHONY : Circle/fast
 
 #=============================================================================
-# Target rules for targets named Blocks
+# Target rules for targets named Redrover
 
 # Build rule for target.
-Blocks: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Blocks
-.PHONY : Blocks
+Redrover: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Redrover
+.PHONY : Redrover
 
 # fast build rule for target.
-Blocks/fast:
-	$(MAKE) -f examples/CMakeFiles/Blocks.dir/build.make examples/CMakeFiles/Blocks.dir/build
-.PHONY : Blocks/fast
+Redrover/fast:
+	$(MAKE) -f examples/CMakeFiles/Redrover.dir/build.make examples/CMakeFiles/Redrover.dir/build
+.PHONY : Redrover/fast
+
+#=============================================================================
+# Target rules for targets named Blockers
+
+# Build rule for target.
+Blockers: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Blockers
+.PHONY : Blockers
+
+# fast build rule for target.
+Blockers/fast:
+	$(MAKE) -f examples/CMakeFiles/Blockers.dir/build.make examples/CMakeFiles/Blockers.dir/build
+.PHONY : Blockers/fast
 
 # Help Target
 help:
@@ -662,10 +675,11 @@ help:
 	@echo "... ExperimentalBuild"
 	@echo "... package"
 	@echo "... RVO"
-	@echo "... Redrover"
+	@echo "... Blocks"
 	@echo "... Roadmap"
 	@echo "... Circle"
-	@echo "... Blocks"
+	@echo "... Redrover"
+	@echo "... Blockers"
 .PHONY : help
 
 

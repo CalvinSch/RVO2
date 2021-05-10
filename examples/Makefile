@@ -68,17 +68,27 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	cd /mnt/c/Users/carson/Documents/school/cs657/project && /usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -91,27 +101,26 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target test
-test/fast: test
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-.PHONY : test/fast
+.PHONY : rebuild_cache/fast
 
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /mnt/c/Users/carson/Documents/school/cs657/project && /usr/bin/cpack --config ./CPackSourceConfig.cmake /mnt/c/Users/carson/Documents/school/cs657/project/CPackSourceConfig.cmake
-.PHONY : package_source
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"development\" \"runtime\""
+.PHONY : list_install_components
 
-# Special rule for the target package_source
-package_source/fast: package_source
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
 
-.PHONY : package_source/fast
+.PHONY : list_install_components/fast
 
 # Special rule for the target install
 install: preinstall
@@ -125,37 +134,28 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"development\" \"runtime\""
-.PHONY : list_install_components
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	cd /mnt/c/Users/carson/Documents/school/cs657/project && /usr/bin/cpack --config ./CPackSourceConfig.cmake /mnt/c/Users/carson/Documents/school/cs657/project/CPackSourceConfig.cmake
+.PHONY : package_source
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
+# Special rule for the target package_source
+package_source/fast: package_source
 
-.PHONY : list_install_components/fast
+.PHONY : package_source/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /mnt/c/Users/carson/Documents/school/cs657/project && /usr/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-
-.PHONY : package/fast
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -190,19 +190,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-examples/CMakeFiles/Redrover.dir/rule:
-	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/Redrover.dir/rule
-.PHONY : examples/CMakeFiles/Redrover.dir/rule
+examples/CMakeFiles/Blocks.dir/rule:
+	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/Blocks.dir/rule
+.PHONY : examples/CMakeFiles/Blocks.dir/rule
 
 # Convenience name for target.
-Redrover: examples/CMakeFiles/Redrover.dir/rule
+Blocks: examples/CMakeFiles/Blocks.dir/rule
 
-.PHONY : Redrover
+.PHONY : Blocks
 
 # fast build rule for target.
-Redrover/fast:
-	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f examples/CMakeFiles/Redrover.dir/build.make examples/CMakeFiles/Redrover.dir/build
-.PHONY : Redrover/fast
+Blocks/fast:
+	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f examples/CMakeFiles/Blocks.dir/build.make examples/CMakeFiles/Blocks.dir/build
+.PHONY : Blocks/fast
 
 # Convenience name for target.
 examples/CMakeFiles/Roadmap.dir/rule:
@@ -235,19 +235,61 @@ Circle/fast:
 .PHONY : Circle/fast
 
 # Convenience name for target.
-examples/CMakeFiles/Blocks.dir/rule:
-	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/Blocks.dir/rule
-.PHONY : examples/CMakeFiles/Blocks.dir/rule
+examples/CMakeFiles/Redrover.dir/rule:
+	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/Redrover.dir/rule
+.PHONY : examples/CMakeFiles/Redrover.dir/rule
 
 # Convenience name for target.
-Blocks: examples/CMakeFiles/Blocks.dir/rule
+Redrover: examples/CMakeFiles/Redrover.dir/rule
 
-.PHONY : Blocks
+.PHONY : Redrover
 
 # fast build rule for target.
-Blocks/fast:
-	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f examples/CMakeFiles/Blocks.dir/build.make examples/CMakeFiles/Blocks.dir/build
-.PHONY : Blocks/fast
+Redrover/fast:
+	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f examples/CMakeFiles/Redrover.dir/build.make examples/CMakeFiles/Redrover.dir/build
+.PHONY : Redrover/fast
+
+# Convenience name for target.
+examples/CMakeFiles/Blockers.dir/rule:
+	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/Blockers.dir/rule
+.PHONY : examples/CMakeFiles/Blockers.dir/rule
+
+# Convenience name for target.
+Blockers: examples/CMakeFiles/Blockers.dir/rule
+
+.PHONY : Blockers
+
+# fast build rule for target.
+Blockers/fast:
+	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f examples/CMakeFiles/Blockers.dir/build.make examples/CMakeFiles/Blockers.dir/build
+.PHONY : Blockers/fast
+
+Blockers.o: Blockers.cpp.o
+
+.PHONY : Blockers.o
+
+# target to build an object file
+Blockers.cpp.o:
+	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f examples/CMakeFiles/Blockers.dir/build.make examples/CMakeFiles/Blockers.dir/Blockers.cpp.o
+.PHONY : Blockers.cpp.o
+
+Blockers.i: Blockers.cpp.i
+
+.PHONY : Blockers.i
+
+# target to preprocess a source file
+Blockers.cpp.i:
+	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f examples/CMakeFiles/Blockers.dir/build.make examples/CMakeFiles/Blockers.dir/Blockers.cpp.i
+.PHONY : Blockers.cpp.i
+
+Blockers.s: Blockers.cpp.s
+
+.PHONY : Blockers.s
+
+# target to generate assembly for a file
+Blockers.cpp.s:
+	cd /mnt/c/Users/carson/Documents/school/cs657/project && $(MAKE) -f examples/CMakeFiles/Blockers.dir/build.make examples/CMakeFiles/Blockers.dir/Blockers.cpp.s
+.PHONY : Blockers.cpp.s
 
 Blocks.o: Blocks.cpp.o
 
@@ -363,19 +405,23 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... Blocks"
 	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... package_source"
-	@echo "... install"
-	@echo "... list_install_components"
-	@echo "... rebuild_cache"
-	@echo "... package"
-	@echo "... Redrover"
 	@echo "... Roadmap"
 	@echo "... Circle"
-	@echo "... Blocks"
+	@echo "... Redrover"
+	@echo "... Blockers"
+	@echo "... test"
+	@echo "... package"
+	@echo "... edit_cache"
+	@echo "... rebuild_cache"
+	@echo "... list_install_components"
+	@echo "... install"
+	@echo "... package_source"
+	@echo "... install/local"
+	@echo "... Blockers.o"
+	@echo "... Blockers.i"
+	@echo "... Blockers.s"
 	@echo "... Blocks.o"
 	@echo "... Blocks.i"
 	@echo "... Blocks.s"
