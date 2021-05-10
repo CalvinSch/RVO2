@@ -1,0 +1,78 @@
+<canvas id="canvas"></canvas>
+
+<script src="location_data.js"></script>
+
+<script>
+
+	const SCALE = 3;
+
+	const AGENT_COLOR = "#ffffff";
+	const BACKGROUND_COLOR = "#000000";
+	const OBSTACLE_COLOR = "#ff0000";
+
+	const canvas = document.getElementById("canvas");
+	const ctx = canvas.getContext("2d");
+
+	canvas.width = 200 * SCALE;
+	canvas.height = 200 * SCALE;
+
+	ctx.fillStyle = AGENT_COLOR;
+
+	const draw_background = () => {
+		ctx.fillStyle = BACKGROUND_COLOR;
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+	};
+
+	const draw_agents = (idx) => {
+
+		if (typeof location_data == "undefined") {
+			console.error("no location data found");
+			return;
+		}
+
+		let locations = location_data[idx];
+
+		ctx.fillStyle = AGENT_COLOR;
+		locations.forEach(location => {
+			
+			ctx.fillRect(location.x * SCALE + canvas.width/2, location.y * SCALE + canvas.height/2, SCALE, SCALE);
+
+		});
+
+	};
+
+	const draw_obstacles = () => {
+
+		if (typeof obstacle_data == "undefined") {
+			console.warn("no obstacle data found");
+			obstacle_data = [];
+		}
+
+		ctx.strokeStyle = OBSTACLE_COLOR;
+		obstacle_data.forEach(obstacle => {
+			ctx.moveTo(obstacle[0].x, obstacle[0].y);
+
+			obstacle.forEach(point => {
+				ctx.lineTo(point.x, point.y);
+			});
+
+			ctx.lineTo(obstacle[0].x, obstacle[0].y);
+			ctx.stroke();
+		});
+
+	};
+
+	let location_data_idx = 0;
+	requestAnimationFrame(function loop() {
+
+		draw_background();
+		draw_obstacles();
+
+		draw_agents(location_data_idx);
+
+		location_data_idx = (++location_data_idx) % location_data.length;
+	
+		requestAnimationFrame(loop);
+	});
+
+</script>

@@ -77,11 +77,11 @@ void setupScenario(RVO::RVOSimulator *sim)
 
 	for (size_t i = 0; i < 100; ++i) {
 		if(i < 50) {
-			sim->addAgent(RVO::Vector2(-50.0f, -61.25f + i * 2.50f));
+			sim->addAgent(RVO::Vector2(-75.0f, -75.0f + i * 3.0f));
 			sim->setAgentPrefVelocity(i, RVO::Vector2(1.0f, 0.0f));
 		}
 		else {
-			sim->addAgent(RVO::Vector2(50.0f, -61.25f + (i-50) * 2.50f));
+			sim->addAgent(RVO::Vector2(75.0f, -75.0f + (i-50) * 3.0f));
 			sim->setAgentPrefVelocity(i, RVO::Vector2(-1.0f, 0.0f));
 		}
 	}
