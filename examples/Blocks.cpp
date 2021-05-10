@@ -141,15 +141,15 @@ void setupScenario(RVO::RVOSimulator *sim)
 #if RVO_OUTPUT_TIME_AND_POSITIONS
 void updateVisualization(RVO::RVOSimulator *sim)
 {
-	/* Output the current global time. */
-	std::cout << sim->getGlobalTime();
+	std:: cout << "[";
 
 	/* Output the current position of all the agents. */
 	for (size_t i = 0; i < sim->getNumAgents(); ++i) {
-		std::cout << " " << sim->getAgentPosition(i);
+		std::cout << (i == 0 ? "" : ",") << sim->getAgentPosition(i);
 	}
 
-	std::cout << std::endl;
+	std::cout << "]";
+
 }
 #endif
 
@@ -202,9 +202,15 @@ int main()
 	/* Set up the scenario. */
 	setupScenario(sim);
 
+	std::cout << "const posiiton_data = [" << std::endl;
+	int first_comma = 0;
+
 	/* Perform (and manipulate) the simulation. */
 	do {
 #if RVO_OUTPUT_TIME_AND_POSITIONS
+		if (first_comma)
+			std::cout << "," << std::endl;
+		first_comma = 1;
 		updateVisualization(sim);
 #endif
 		setPreferredVelocities(sim);

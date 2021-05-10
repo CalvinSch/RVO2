@@ -273,7 +273,7 @@ namespace RVO {
 	RVO_EXPORT inline std::ostream &operator<<(std::ostream &os,
 											   const Vector2 &vector)
 	{
-		os << "(" << vector.x() << "," << vector.y() << ")";
+		os << "{x: " << vector.x() << ",y: " << vector.y() << "}";
 
 		return os;
 	}
