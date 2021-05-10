@@ -1,0 +1,1 @@
+/usr/bin/clang++  -Wall -Wformat-security -Werror=format-security -Wno-unused -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/Circle.dir/Circle.cpp.o -o Circle  -Wl,-rpath,/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src ../src/libRVO.2.0.3.dylib 

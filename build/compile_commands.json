@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src",
+  "command": "/usr/bin/clang++ -DRVO_EXPORTS -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/src  -Wall -Wformat-security -Werror=format-security -Wno-unused -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -std=c++98 -o CMakeFiles/RVO.dir/Agent.cpp.o -c /Users/calvinschaul/Documents/cs657-termproject/RVO-project/src/Agent.cpp",
+  "file": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/src/Agent.cpp"
+},
+{
+  "directory": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src",
+  "command": "/usr/bin/clang++ -DRVO_EXPORTS -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/src  -Wall -Wformat-security -Werror=format-security -Wno-unused -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -std=c++98 -o CMakeFiles/RVO.dir/KdTree.cpp.o -c /Users/calvinschaul/Documents/cs657-termproject/RVO-project/src/KdTree.cpp",
+  "file": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/src/KdTree.cpp"
+},
+{
+  "directory": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src",
+  "command": "/usr/bin/clang++ -DRVO_EXPORTS -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/src  -Wall -Wformat-security -Werror=format-security -Wno-unused -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -std=c++98 -o CMakeFiles/RVO.dir/Obstacle.cpp.o -c /Users/calvinschaul/Documents/cs657-termproject/RVO-project/src/Obstacle.cpp",
+  "file": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/src/Obstacle.cpp"
+},
+{
+  "directory": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src",
+  "command": "/usr/bin/clang++ -DRVO_EXPORTS -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/src  -Wall -Wformat-security -Werror=format-security -Wno-unused -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -std=c++98 -o CMakeFiles/RVO.dir/RVOSimulator.cpp.o -c /Users/calvinschaul/Documents/cs657-termproject/RVO-project/src/RVOSimulator.cpp",
+  "file": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/src/RVOSimulator.cpp"
+},
+{
+  "directory": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/examples",
+  "command": "/usr/bin/clang++ -DRVO_OUTPUT_TIME_AND_POSITIONS=1 -DRVO_SEED_RANDOM_NUMBER_GENERATOR=1 -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/src  -Wall -Wformat-security -Werror=format-security -Wno-unused -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIE -std=c++98 -o CMakeFiles/Blocks.dir/Blocks.cpp.o -c /Users/calvinschaul/Documents/cs657-termproject/RVO-project/examples/Blocks.cpp",
+  "file": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/examples/Blocks.cpp"
+},
+{
+  "directory": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/examples",
+  "command": "/usr/bin/clang++ -DRVO_OUTPUT_TIME_AND_POSITIONS=1 -DRVO_SEED_RANDOM_NUMBER_GENERATOR=1 -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/src  -Wall -Wformat-security -Werror=format-security -Wno-unused -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIE -std=c++98 -o CMakeFiles/Roadmap.dir/Roadmap.cpp.o -c /Users/calvinschaul/Documents/cs657-termproject/RVO-project/examples/Roadmap.cpp",
+  "file": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/examples/Roadmap.cpp"
+},
+{
+  "directory": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/examples",
+  "command": "/usr/bin/clang++ -DRVO_OUTPUT_TIME_AND_POSITIONS=1 -DRVO_SEED_RANDOM_NUMBER_GENERATOR=1 -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/src -I/Users/calvinschaul/Documents/cs657-termproject/RVO-project/src  -Wall -Wformat-security -Werror=format-security -Wno-unused -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIE -std=c++98 -o CMakeFiles/Circle.dir/Circle.cpp.o -c /Users/calvinschaul/Documents/cs657-termproject/RVO-project/examples/Circle.cpp",
+  "file": "/Users/calvinschaul/Documents/cs657-termproject/RVO-project/examples/Circle.cpp"
+}
+]

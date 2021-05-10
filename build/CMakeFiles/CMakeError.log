@@ -1,0 +1,34 @@
+Performing C++ SOURCE FILE Test HRVO_LINKER_SUPPORTS__FATAL_WARNINGS failed with the following output:
+Change Dir: /Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_254ca/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_254ca.dir/build.make CMakeFiles/cmTC_254ca.dir/build
+Building CXX object CMakeFiles/cmTC_254ca.dir/src.cxx.o
+/usr/bin/clang++ -DHRVO_LINKER_SUPPORTS__FATAL_WARNINGS  -Wall -Wformat-security -Werror=format-security -Wno-unused  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIE -std=c++98 -MD -MT CMakeFiles/cmTC_254ca.dir/src.cxx.o -MF CMakeFiles/cmTC_254ca.dir/src.cxx.o.d -o CMakeFiles/cmTC_254ca.dir/src.cxx.o -c /Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_254ca
+/usr/local/Cellar/cmake/3.20.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_254ca.dir/link.txt --verbose=1
+/usr/bin/clang++  -Wall -Wformat-security -Werror=format-security -Wno-unused  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -Wl,--fatal-warnings CMakeFiles/cmTC_254ca.dir/src.cxx.o -o cmTC_254ca 
+ld: unknown option: --fatal-warnings
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [cmTC_254ca] Error 1
+make: *** [cmTC_254ca/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test RVO_LINKER_SUPPORTS__AS_NEEDED failed with the following output:
+Change Dir: /Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_c93d2/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_c93d2.dir/build.make CMakeFiles/cmTC_c93d2.dir/build
+Building CXX object CMakeFiles/cmTC_c93d2.dir/src.cxx.o
+/usr/bin/clang++ -DRVO_LINKER_SUPPORTS__AS_NEEDED  -Wall -Wformat-security -Werror=format-security -Wno-unused  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIE -std=c++98 -MD -MT CMakeFiles/cmTC_c93d2.dir/src.cxx.o -MF CMakeFiles/cmTC_c93d2.dir/src.cxx.o.d -o CMakeFiles/cmTC_c93d2.dir/src.cxx.o -c /Users/calvinschaul/Documents/cs657-termproject/RVO-project/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_c93d2
+/usr/local/Cellar/cmake/3.20.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c93d2.dir/link.txt --verbose=1
+/usr/bin/clang++  -Wall -Wformat-security -Werror=format-security -Wno-unused  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -Wl,-fatal_warnings -Wl,--as-needed CMakeFiles/cmTC_c93d2.dir/src.cxx.o -o cmTC_c93d2 
+ld: unknown option: --as-needed
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [cmTC_c93d2] Error 1
+make: *** [cmTC_c93d2/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
