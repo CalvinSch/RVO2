@@ -78,11 +78,11 @@ void setupScenario(RVO::RVOSimulator *sim)
 	for (size_t i = 0; i < 100; ++i) {
 		if(i < 50) {
 			sim->addAgent(RVO::Vector2(-50.0f, -61.25f + i * 2.50f));
-			goals.push_back(RVO::Vector2(50.0f, -61.25f + i * 2.50f));
+			sim->setAgentPrefVelocity(i, RVO::Vector2(1.0f, 0.0f));
 		}
 		else {
-			sim->addAgent(RVO::Vector2(50.0f, -61.25f + i * 2.50f));
-			goals.push_back(RVO::Vector2(-50.0f, -61.25f + i * 2.50f));
+			sim->addAgent(RVO::Vector2(50.0f, -61.25f + (i-50) * 2.50f));
+			sim->setAgentPrefVelocity(i, RVO::Vector2(-1.0f, 0.0f));
 		}
 	}
 }
@@ -126,9 +126,12 @@ bool reachedGoal(RVO::RVOSimulator *sim)
 {
 	/* Check if all agents have reached their goals. */
 	for (size_t i = 0; i < sim->getNumAgents(); ++i) {
-		if (RVO::absSq(sim->getAgentPosition(i) - goals[i]) > sim->getAgentRadius(i) * sim->getAgentRadius(i)) {
+
+		RVO::Vector2 pos = sim->getAgentPosition(i);
+
+		if (pos.x() < 100 && pos.x() > -100)
 			return false;
-		}
+
 	}
 
 	return true;
@@ -142,15 +145,22 @@ int main()
 	/* Set up the scenario. */
 	setupScenario(sim);
 
+	std::cout << "const location_data = [";
+	int first_comma = 0;
+
 	/* Perform (and manipulate) the simulation. */
 	do {
 #if RVO_OUTPUT_TIME_AND_POSITIONS
+		if (first_comma)
+			std::cout << ",";
+		first_comma = 1;
 		updateVisualization(sim);
 #endif
-		setPreferredVelocities(sim);
 		sim->doStep();
 	}
 	while (!reachedGoal(sim));
+
+	std::cout << "]" << std::endl;
 
 	delete sim;
 
