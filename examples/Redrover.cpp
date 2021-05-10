@@ -77,12 +77,12 @@ void setupScenario(RVO::RVOSimulator *sim)
 
 	for (size_t i = 0; i < 100; ++i) {
 		if(i < 50) {
-			sim->addAgent(RVO::Vector2(-50.0f, -80.0f + i * 2.50f));
-			goals.push_back(RVO::Vector2(50.0f, -80.0f + i * 2.50f));
+			sim->addAgent(RVO::Vector2(-50.0f, -61.25f + i * 2.50f));
+			goals.push_back(RVO::Vector2(50.0f, -61.25f + i * 2.50f));
 		}
 		else {
-			sim->addAgent(RVO::Vector2(50.0f, -80.0f + i * 2.50f));
-			goals.push_back(RVO::Vector2(-50.0f, -80.0f + i * 2.50f));
+			sim->addAgent(RVO::Vector2(50.0f, -61.25f + i * 2.50f));
+			goals.push_back(RVO::Vector2(-50.0f, -61.25f + i * 2.50f));
 		}
 	}
 }
@@ -90,15 +90,15 @@ void setupScenario(RVO::RVOSimulator *sim)
 #if RVO_OUTPUT_TIME_AND_POSITIONS
 void updateVisualization(RVO::RVOSimulator *sim)
 {
-	/* Output the current global time. */
-	std::cout << sim->getGlobalTime();
+	std:: cout << "[";
 
 	/* Output the current position of all the agents. */
 	for (size_t i = 0; i < sim->getNumAgents(); ++i) {
-		std::cout << " " << sim->getAgentPosition(i);
+		std::cout << (i == 0 ? "" : ",") << sim->getAgentPosition(i);
 	}
 
-	std::cout << std::endl;
+	std::cout << "]";
+
 }
 #endif
 
