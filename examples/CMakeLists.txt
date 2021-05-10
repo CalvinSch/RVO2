@@ -118,4 +118,17 @@ if(BUILD_TESTING)
   set_tests_properties(Redrover PROPERTIES
     LABELS medium
     TIMEOUT 60)
+
+  add_executable(Blockers Blockers.cpp)
+  target_compile_definitions(Blockers PRIVATE
+    ${RVO_EXAMPLES_COMPILE_DEFINITIONS})
+  target_link_libraries(Blockers PRIVATE ${RVO_LIBRARY})
+  target_compile_options(Blockers PRIVATE ${RVO_EXAMPLES_COMPILE_OPTIONS})
+  set_target_properties(Blockers PROPERTIES
+    INTERPROCEDURAL_OPTIMIZATION ${RVO_EXAMPLES_INTERPROCEDURAL_OPTIMIZATION}
+    LINK_FLAGS "${RVO_EXAMPLES_LINK_FLAGS}")
+  add_test(NAME Blockers COMMAND Blockers)
+  set_tests_properties(Blockers PROPERTIES
+    LABELS medium
+    TIMEOUT 60)
 endif()
