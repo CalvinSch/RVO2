@@ -202,7 +202,7 @@ int main()
 	/* Set up the scenario. */
 	setupScenario(sim);
 
-	std::cout << "const posiiton_data = [" << std::endl;
+	std::cout << "const location_data = [" << std::endl;
 	int first_comma = 0;
 
 	/* Perform (and manipulate) the simulation. */
@@ -217,6 +217,8 @@ int main()
 		sim->doStep();
 	}
 	while (!reachedGoal(sim));
+
+	std::cout << "]";
 
 	delete sim;
 
