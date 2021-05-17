@@ -50,3 +50,6 @@ Dept. of Computer Science
 Frederick P. Brooks, Jr. Computer Science Bldg.  
 Chapel Hill, N.C. 27599-3175  
 United States of America
+
+## Contributions of Calvin and Carson:
+Added simulation visualization and created more in-depth simulations
